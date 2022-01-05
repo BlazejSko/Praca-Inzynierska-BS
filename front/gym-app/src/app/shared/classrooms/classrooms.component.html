@@ -1,0 +1,10 @@
+<p>classrooms works!</p>
+
+<p *ngFor="let classroom of ClassroomList" (click)="classroomClicked(classroom)">{{ classroom.name }}
+    <button (click)="deleteClassroom(classroom.id)"> Delete </button>
+</p>
+
+Name <input type="text" [(ngModel)]="selectedClassroom.name"> <br>
+<button *ngIf="selectedClassroom.id !== -1" (click)="editClassroom()">Edit</button>
+<button *ngIf="selectedClassroom.name !== ''" (click)="addClassroom()">Post</button>
+<hr>

@@ -1,0 +1,15 @@
+<div>
+    <label class="form-label">Classroom name</label>
+    <div>
+        <input type="text" [(ngModel)]="ClassroomName" 
+        placeholder="Enter classroom name">
+    </div>
+</div>
+
+<button (click)="addClassroom()" >
+    Add
+</button>
+
+<button (click)="updateClassroom()" >
+    Update
+</button>

@@ -1,0 +1,21 @@
+<p>classes-category-list works!</p>
+
+<p *ngFor="let category of classCategoryList" (click)="onClassCategoryClick(category)">{{ category.name }}
+    <button (click)="deleteClassCategory(category.id)" mat-raised-button color="warn">Delete</button>
+    <br>
+    {{category.description}}
+</p>
+
+Name <input type="text" [(ngModel)]="selectedClassCategory.name"> <br>
+Description <input type="text" [(ngModel)]="selectedClassCategory.description"> <br>
+
+<button mat-raised-button color="primary"
+*ngIf="selectedClassCategory.name !== '' 
+&& selectedClassCategory.description" 
+(click)="addClassCategory()">Post</button>
+
+<button mat-raised-button color="primary"
+*ngIf="selectedClassCategory.id !== -1" 
+(click)="editClassCategory()">Edit</button>
+
+<hr>
