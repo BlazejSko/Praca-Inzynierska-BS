@@ -1,0 +1,22 @@
+<div class="main-div">
+    <mat-card>
+        <mat-toolbar color="primary">Login Page</mat-toolbar>
+        <form [formGroup]="form" class="login-form" (submit)="submit()">
+            <mat-form-field>
+                <input matInput 
+                placeholder="Username"
+                formControlName="username">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput 
+                type="password" 
+                placeholder="Password" 
+                formControlName="password">
+            </mat-form-field>
+            <button mat-raised-button type="submit">Login</button> <br>
+
+            <button mat-button (click)="toRegister()">New here? Create an accountt</button>
+        </form>
+    </mat-card>
+</div>

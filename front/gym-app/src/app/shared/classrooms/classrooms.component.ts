@@ -15,9 +15,13 @@ export class ClassroomsComponent implements OnInit {
   }
   ClassroomList: any = [];
   selectedClassroom!: Classroom;
+  displayedColumns: string[] = ['id', 'name'];
 
   ngOnInit(): void {
     this.refreshClassroomsList();
+  }
+  show(){
+    console.log(this.ClassroomList)
   }
 
   refreshClassroomsList(){

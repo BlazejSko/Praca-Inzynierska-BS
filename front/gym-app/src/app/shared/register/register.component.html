@@ -1,0 +1,38 @@
+<div class="main-div">
+
+    <mat-card>
+        <mat-toolbar color="primary">Register</mat-toolbar>
+        <form [formGroup]="form" (submit)="submit()">
+            <div class="login-form">
+
+              <mat-form-field >
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" >
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="first_name">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="last_name">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password">
+              </mat-form-field>
+              <button mat-raised-button type="submit">Register</button>
+            </div>
+        </form>
+    </mat-card>
+
+</div>
+  

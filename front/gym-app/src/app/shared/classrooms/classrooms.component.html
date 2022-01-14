@@ -8,3 +8,25 @@ Name <input type="text" [(ngModel)]="selectedClassroom.name"> <br>
 <button *ngIf="selectedClassroom.id !== -1" (click)="editClassroom()">Edit</button>
 <button *ngIf="selectedClassroom.name !== ''" (click)="addClassroom()">Post</button>
 <hr>
+
+
+  
+<table mat-table [dataSource]="ClassroomList" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+
+    
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  

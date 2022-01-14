@@ -1,0 +1,7 @@
+.content {
+    min-height: calc(100vh - 72px - 56px);
+    width: 100%;
+  }
+  .content-container {
+    padding: 0 16px;
+  }

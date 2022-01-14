@@ -1,0 +1,11 @@
+{{message}}
+
+
+<p *ngFor="let class of userClassesList" (click)="show()">
+    ID: {{ class.id }}
+    User Id: {{ class.user }}
+    Class Id {{ class.class_id }}
+
+
+</p>
+<button mat-raised-button color="warn"  (click)="show()">Delete</button>

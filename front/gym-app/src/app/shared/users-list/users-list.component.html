@@ -1,0 +1,9 @@
+<p>users-list works!</p>
+
+<p *ngFor="let user of usersList" (click)="onUserClick(user)">{{ user.username }}
+    <button mat-raised-button color="warn" (click)="deleteUser(user.id)">Delete</button>
+    <br>
+    {{user.first_name}} {{user.last_name}}
+</p>
+<button (click)="addUser()">Add</button>
+<hr>

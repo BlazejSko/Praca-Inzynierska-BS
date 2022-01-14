@@ -1,6 +1,7 @@
 table {
     width: 100%;
   }
+
   .mat-row:hover .mat-cell {
     background-color: rgb(157, 145, 228);
   }
