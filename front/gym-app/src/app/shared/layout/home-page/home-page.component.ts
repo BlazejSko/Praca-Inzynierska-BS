@@ -31,7 +31,8 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.http.getLoggedinUser().subscribe(
       (res: any) => {
-        this.message = `Hi ${res.username}`;
+        this.message = `Hi ${res.username}!`;
+        this.loggedUser = res;
         Emitters.authEmitter.emit(true);
       },
       err => {

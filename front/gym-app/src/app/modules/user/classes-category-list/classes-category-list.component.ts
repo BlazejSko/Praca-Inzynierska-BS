@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClassesCategory } from 'src/app/core/models/classes-category-payload';
 import { PaginatedList } from 'src/app/core/models/paginated-list-type';
-import { SharedService } from '../shared.service';
+import { SharedService } from '../../../shared/shared.service';
 
 @Component({
   selector: 'app-classes-category-list',

@@ -4,15 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedService } from './shared/shared.service';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ClassroomsComponent } from './shared/classrooms/classrooms.component';
-import { AddEditClassroomComponent } from './shared/add-edid-classrooms.ts/add-edit-classroom/add-edit-classroom.component';
-import { ClassesCategoryListComponent } from './shared/classes-category-list/classes-category-list.component';
+import { ClassroomsComponent } from './modules/trainer/classrooms/classrooms.component';
+import { AddEditClassroomComponent } from './shared/add-edit-components/add-edit-classroom/add-edit-classroom.component';
+import { ClassesCategoryListComponent } from './modules/user/classes-category-list/classes-category-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UsersListComponent } from './shared/users-list/users-list.component';
-import { ClassesListComponent } from './shared/classes-list/classes-list.component';
-import { UserClassesComponent } from './shared/user-classes/user-classes.component';
+import { UsersListComponent } from './modules/trainer/users-list/users-list.component';
+import { ClassesListComponent } from './modules/user/classes-list/classes-list.component';
+import { UserClassesComponent } from './modules/user/user-classes/user-classes.component';
 import { HeaderComponent } from './shared/layout/header/header.component';
 
 import { MatCardModule } from '@angular/material/card';
@@ -25,8 +25,12 @@ import { FooterComponent } from './shared/layout/footer/footer.component';
 import { HomePageComponent } from './shared/layout/home-page/home-page.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { RegisterComponent } from './shared/register/register.component';
-import { LoginComponent } from './shared/login/login.component';
+import { RegisterComponent } from './modules/auth/register/register.component';
+import { LoginComponent } from './modules/auth/login/login.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddEdidClassesComponent } from './shared/add-edit-components/add-edid-classes/add-edid-classes.component';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +46,7 @@ import { LoginComponent } from './shared/login/login.component';
     HomePageComponent,
     RegisterComponent,
     LoginComponent,
+    AddEdidClassesComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,8 +62,11 @@ import { LoginComponent } from './shared/login/login.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
+    MatSelectModule,
   ],
   providers: [SharedService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddEditClassroomComponent],
 })
-export class AppModule { }
+export class AppModule {}

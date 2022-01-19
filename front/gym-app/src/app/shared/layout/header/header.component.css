@@ -1,7 +1,11 @@
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
-.logo{
-    cursor: pointer;
+.logo {
+  cursor: pointer;
+}
+
+.active {
+  background-color: red;
 }

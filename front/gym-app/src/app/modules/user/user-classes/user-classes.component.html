@@ -1,0 +1,39 @@
+<table mat-table [dataSource]="userClassesList" class="mat-elevation-z8">
+    <ng-container matColumnDef="trainer">
+      <th mat-header-cell *matHeaderCellDef>Trainer</th>
+      <td mat-cell *matCellDef="let element">{{ element.class_id.trainer }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="classroom">
+      <th mat-header-cell *matHeaderCellDef>Classroom</th>
+      <td mat-cell *matCellDef="let element">{{ element.class_id.classroom }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="start_date">
+      <th mat-header-cell *matHeaderCellDef>StartDate</th>
+      <td mat-cell *matCellDef="let element">{{ element.class_id.start_date }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="class_category">
+      <th mat-header-cell *matHeaderCellDef>Class Category</th>
+      <td mat-cell *matCellDef="let element">{{ element.class_id.class_category }}</td>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="options">
+      <th mat-header-cell *matHeaderCellDef>Options</th>
+      <td mat-cell *matCellDef="let element">
+
+        <button
+          mat-fab
+          color="primary"
+          (click)="deleteUserClass(element.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>

@@ -1,0 +1,71 @@
+<div class="main-div">
+  <mat-card>
+    <form [formGroup]="form" class="login-form" (submit)="submit()">
+      <mat-form-field>
+        <input
+          matInput
+          type="datetime-local"
+          placeholder="start date"
+          formControlName="start_date"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="datetime-local"
+          placeholder="end date"
+          formControlName="end_date"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="number"
+          placeholder="max capacity"
+          formControlName="max_capacity"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="number"
+          placeholder="current capacity"
+          formControlName="current_capacity"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>class category</mat-label>
+        <mat-select formControlName="class_category">
+          <mat-option
+            *ngFor="let category of class_categories"
+            [value]="category.name"
+          >
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>classroom</mat-label>
+        <mat-select formControlName="classroom">
+          <mat-option
+            *ngFor="let classroom of classrooms"
+            [value]="classroom.name"
+          >
+            {{ classroom.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="trainer username" formControlName="trainer" />
+      </mat-form-field>
+
+      <button mat-raised-button type="submit">Add</button> <br />
+    </form>
+  </mat-card>
+</div>

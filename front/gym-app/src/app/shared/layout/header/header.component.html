@@ -1,18 +1,43 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
+  <span routerLink="" class="logo">
+    <mat-icon>fitness_center</mat-icon>
+    Best Gym
+  </span>
 
-    <span routerLink="" class="logo">
-        <mat-icon>fitness_center</mat-icon>
-        Best Gym
-    </span>
+  <div class="spacer"></div>
 
-    <div class="spacer"></div>
-
-    <a mat-button routerLink="">Home</a>
-    <a mat-button routerLink="trainings">Trainings</a>
-    <a mat-button routerLink="classrooms">About Us</a>
-    <a mat-raised-button color="primary" routerLink="login" *ngIf="!authenticated">Log In</a>
-    <a mat-button routerLink="register" *ngIf="!authenticated">Register</a>
-    <a mat-raised-button color="primary" routerLink="login" *ngIf="authenticated" (click)="logout()">Logout</a>
-
-
+  <a mat-button routerLink="">Home</a>
+  <a mat-button (click)="navigateToClassesList()" *ngIf="authenticated"
+    >Trainings</a
+  >
+  <a
+    mat-button
+    (click)="navigateToUserClasses()"
+    *ngIf="authenticated && !loggedUser.is_staff"
+    >My classes</a
+  >
+  <a mat-button routerLink="users" *ngIf="authenticated && loggedUser.is_staff"
+    >Users</a
+  >
+  <a
+    mat-button
+    routerLink="classes-category"
+    *ngIf="authenticated && loggedUser.is_staff"
+    >Classes Category</a
+  >
+  <a mat-button routerLink="classrooms" *ngIf="!loggedUser.is_staff"
+    >About Us</a
+  >
+  <a mat-raised-button color="primary" routerLink="login" *ngIf="!authenticated"
+    >Log In</a
+  >
+  <a mat-button routerLink="register" *ngIf="!authenticated">Register</a>
+  <a
+    mat-raised-button
+    color="primary"
+    routerLink="login"
+    *ngIf="authenticated"
+    (click)="logout()"
+    >Logout</a
+  >
 </mat-toolbar>
