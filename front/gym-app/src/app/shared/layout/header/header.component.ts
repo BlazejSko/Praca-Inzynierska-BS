@@ -17,8 +17,6 @@ export class HeaderComponent implements OnInit {
     private http: HttpClient,
     private sharedService: SharedService,
     private router: Router
-    
-    
   ) {
     this.loggedUser = {
       id: -1,
@@ -37,26 +35,25 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     Emitters.authEmitter.subscribe((auth: boolean) => {
       this.authenticated = auth;
-      console.log('authemitter in header:', auth);
     });
     this.refreshLoggedUser();
   }
 
-  navigateToUserClasses(){
+  navigateToUserClasses() {
     this.refreshLoggedUser();
     setTimeout(() => {
-      this.router.navigate(['/userclasses/'+this.loggedUser.id])
+      this.router.navigate(['/userclasses/' + this.loggedUser.id]);
     }, 100);
   }
 
-  navigateToClassesList(){
+  navigateToClassesList() {
     this.refreshLoggedUser();
     setTimeout(() => {
-      this.router.navigate(['/trainings/'+this.loggedUser.id])
+      this.router.navigate(['/trainings/' + this.loggedUser.id]);
     }, 100);
   }
 
-  refreshLoggedUser(){
+  refreshLoggedUser() {
     this.sharedService.getLoggedinUser().subscribe(
       (res: any) => {
         this.loggedUser = res;
@@ -76,7 +73,10 @@ export class HeaderComponent implements OnInit {
         {},
         { withCredentials: true }
       )
-      .subscribe(() => (this.authenticated = false));
+      .subscribe(() => {
+        this.authenticated = false;
+        alert('Logout successful!');
+      });
     Emitters.authEmitter.emit(false);
   }
 }

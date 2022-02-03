@@ -78,10 +78,9 @@ export class SharedService {
     return this.http
       .get<PaginatedList<User[]>>(this.APIUrl + '/basicusers')
       .pipe(
-        tap(console.log),
-        map((data: PaginatedList<User>) => data.results),
+        map((data: any) => data.results),
         filter((user) => user.is_staff === true)
-      ); //wtf it doesn't work
+      );
   }
 
   getOneUser(id: number): Observable<User> {
@@ -141,6 +140,14 @@ export class SharedService {
   }
 
   getUserClassesForGivenUser(id: number) {
+    return this.http
+      .get<PaginatedList<UserClasses>>(
+        this.APIUrl + '/users/' + id + '/userclasses'
+      )
+      .pipe(map((data: PaginatedList<UserClasses>) => data.results));
+  }
+
+  getIdForUserClassesForGivenUser(id: number) {
     return this.http
       .get<PaginatedList<UserClasses>>(
         this.APIUrl + '/users/' + id + '/userclasses'

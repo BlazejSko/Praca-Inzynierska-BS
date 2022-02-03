@@ -6,15 +6,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
   constructor(
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router
-    ) { }
+  ) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -22,15 +22,22 @@ export class RegisterComponent implements OnInit {
       first_name: '',
       last_name: '',
       email: '',
-      password: ''
-    })
-  }
-
-  submit(): void{
-    this.http.post('http://127.0.0.1:8000/gymapp/register', this.form.getRawValue())
-    .subscribe(() => {
-      this.router.navigate(['/login']);
+      password: '',
     });
   }
 
+  submit(): void {
+    this.http
+      .post('http://127.0.0.1:8000/gymapp/register', this.form.getRawValue())
+      .subscribe(
+        () => {
+          this.router.navigate(['/login']);
+        },
+        (err) => {
+          alert(
+            "Your data are incorrect. Username, password and names can't have whitespaces and special signs"
+          );
+        }
+      );
+  }
 }

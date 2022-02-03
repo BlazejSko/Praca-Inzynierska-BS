@@ -30,6 +30,9 @@ export class ClassesListComponent implements OnInit {
   classesList!: any;
   selectedClass!: Classes;
   addClasses!: AddClasses;
+  loggedUserClasseSId!: any;
+  loggedUserClasseSIddd: any = [];
+
   displayedColumns: string[] = [
     'id',
     'trainer',
@@ -53,6 +56,14 @@ export class ClassesListComponent implements OnInit {
       participants: [],
     };
     this.refreshLoggedUser();
+    setTimeout(() => {
+      this.http
+        .getIdForUserClassesForGivenUser(this.loggedUser.id)
+        .subscribe((data) => {
+          this.loggedUserClasseSId = data;
+          this.add();
+        });
+    }, 100);
   }
 
   refreshClassesList() {
@@ -115,8 +126,16 @@ export class ClassesListComponent implements OnInit {
     this.dialog.open(AddEdidClassesComponent);
   }
 
-  show(clas: Classes) {
-    console.log(clas);
-    console.log('TUUU', this.classesList);
+  showRegisterButton(class_id: number, current: number, max: number): boolean {
+    if (this.loggedUserClasseSIddd.indexOf(class_id) === -1 && current < max && !this.loggedUser.is_staff) {
+      return true;
+    } else return false; // UWAGA TROCHE MULI
+    // return current >= max ? false : true;
+  }
+
+  add() {
+    for (let x of this.loggedUserClasseSId) {
+      this.loggedUserClasseSIddd.push(x.class_id.id);
+    }
   }
 }

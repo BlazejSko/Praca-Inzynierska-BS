@@ -36,10 +36,6 @@ export class UserClassesComponent implements OnInit {
     });
   }
 
-  show() {
-    console.log(this.userClassesList);
-  }
-
   deleteUserClass(id: number) {
     if (confirm('Are you sure you want to quit this training?')) {
       this.http.deleteUserClass(id).subscribe(() => {

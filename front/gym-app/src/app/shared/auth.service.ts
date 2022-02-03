@@ -10,7 +10,6 @@ export class AuthService {
   IsLoggedIn() {
     Emitters.authEmitter.subscribe((auth: boolean) => {
       this.authenticated = auth;
-      console.log('authemitter in auth service:', auth);
       return this.authenticated;
     });
     return this.authenticated;

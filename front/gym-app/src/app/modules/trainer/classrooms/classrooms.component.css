@@ -1,6 +1,12 @@
 table {
-    width: 100%;
-  }
-  .mat-row:hover .mat-cell {
-    background-color: rgb(157, 145, 228);
-  }
+  width: 100%;
+}
+.mat-row:hover .mat-cell {
+  background-color: rgb(157, 145, 228);
+}
+.edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

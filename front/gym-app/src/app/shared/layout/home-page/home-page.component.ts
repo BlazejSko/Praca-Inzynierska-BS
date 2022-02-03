@@ -49,10 +49,4 @@ export class HomePageComponent implements OnInit {
       this.userClassesList = data;
     });
   }
-
-  show(){
-    this.refreshUserClassesList();
-    console.log(this.userClassesList)
-  }
-
 }

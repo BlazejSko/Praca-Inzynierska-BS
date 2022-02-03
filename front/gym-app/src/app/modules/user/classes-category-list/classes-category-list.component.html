@@ -1,21 +1,65 @@
-<p>classes-category-list works!</p>
+<table mat-table [dataSource]="classCategoryList" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>id.</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.id }}
+    </td>
+  </ng-container>
 
-<p *ngFor="let category of classCategoryList" (click)="onClassCategoryClick(category)">{{ category.name }}
-    <button (click)="deleteClassCategory(category.id)" mat-raised-button color="warn">Delete</button>
-    <br>
-    {{category.description}}
-</p>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
 
-Name <input type="text" [(ngModel)]="selectedClassCategory.name"> <br>
-Description <input type="text" [(ngModel)]="selectedClassCategory.description"> <br>
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>description</th>
+    <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+  </ng-container>
 
-<button mat-raised-button color="primary"
-*ngIf="selectedClassCategory.name !== '' 
-&& selectedClassCategory.description" 
-(click)="addClassCategory()">Post</button>
+  <ng-container matColumnDef="options">
+    <th mat-header-cell *matHeaderCellDef>options</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-fab color="primary" (click)="onClassCategoryClick(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
 
-<button mat-raised-button color="primary"
-*ngIf="selectedClassCategory.id !== -1" 
-(click)="editClassCategory()">Edit</button>
+      <button mat-fab color="primary" (click)="deleteClassCategory(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
 
-<hr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<button mat-raised-button color="primary" (click)="onCreate()">Add</button>
+
+<hr />
+
+<div class="edit" *ngIf="selectedClassCategory.id !== -1">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="name"
+      [(ngModel)]="selectedClassCategory.name"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="description"
+      [(ngModel)]="selectedClassCategory.description"
+    />
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="editClassCategory()"
+    *ngIf="selectedClassCategory.id !== -1"
+  >
+    Edit
+  </button>
+</div>

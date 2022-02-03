@@ -7,7 +7,6 @@ import { SharedService } from './shared/shared.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClassroomsComponent } from './modules/trainer/classrooms/classrooms.component';
-import { AddEditClassroomComponent } from './shared/add-edit-components/add-edit-classroom/add-edit-classroom.component';
 import { ClassesCategoryListComponent } from './modules/user/classes-category-list/classes-category-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersListComponent } from './modules/trainer/users-list/users-list.component';
@@ -30,12 +29,12 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddEdidClassesComponent } from './shared/add-edit-components/add-edid-classes/add-edid-classes.component';
 import { MatSelectModule } from '@angular/material/select';
+import { AddEdidClassCategoryComponent } from './shared/add-edit-components/add-edid-class-category/add-edid-class-category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClassroomsComponent,
-    AddEditClassroomComponent,
     ClassesCategoryListComponent,
     UsersListComponent,
     ClassesListComponent,
@@ -47,6 +46,7 @@ import { MatSelectModule } from '@angular/material/select';
     RegisterComponent,
     LoginComponent,
     AddEdidClassesComponent,
+    AddEdidClassCategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +67,5 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   providers: [SharedService],
   bootstrap: [AppComponent],
-  entryComponents: [AddEditClassroomComponent],
 })
 export class AppModule {}

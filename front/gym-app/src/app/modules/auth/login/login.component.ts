@@ -12,29 +12,32 @@ export interface Help {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-
 export class LoginComponent implements OnInit {
   form!: FormGroup;
   constructor(
     private formBulider: FormBuilder,
     private router: Router,
     private http: SharedService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.form = this.formBulider.group({
       username: '',
-      password: ''
+      password: '',
     });
   }
 
-  submit(){
-    this.http.postLoggedinUser(this.form.getRawValue()).subscribe(()=> this.router.navigate(['']));
+  submit() {
+    this.http.postLoggedinUser(this.form.getRawValue()).subscribe(
+      () => this.router.navigate(['']),
+      (err) => {
+        alert('Email or password are incorrect');
+      }
+    );
   }
-  toRegister(){
+  toRegister() {
     this.router.navigate(['register']);
   }
-
 }

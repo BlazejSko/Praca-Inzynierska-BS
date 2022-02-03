@@ -6,13 +6,10 @@ import { SharedService } from '../../../shared/shared.service';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.css'],
 })
 export class UsersListComponent implements OnInit {
-
-  constructor(private http: SharedService) { 
-
-  }
+  constructor(private http: SharedService) {}
   usersList: any = [];
   trainerList: any = [];
   displayedColumns: string[] = [
@@ -22,33 +19,33 @@ export class UsersListComponent implements OnInit {
     'last_name',
     'email',
     'is_staff',
-    'options'
+    'options',
   ];
   ngOnInit(): void {
     this.refreshUsersList();
     this.getTrainersList();
   }
 
-  refreshUsersList(){
-    this.http.getUsersList().subscribe(data=> {
+  refreshUsersList() {
+    this.http.getUsersList().subscribe((data) => {
       this.usersList = data;
     });
   }
 
-  getTrainersList(){
-    this.http.getTrainersList().pipe().subscribe(data=> {
-      this.trainerList = data;
-    });
+  getTrainersList() {
+    this.http
+      .getTrainersList()
+      .pipe()
+      .subscribe((data) => {
+        this.trainerList = data;
+      });
   }
 
-  show(){
-    console.log(this.usersList)
-    console.log(this.trainerList)
-  }
-
-  deleteUser(item: number){
-    this.http.deleteUser(item).subscribe((data) => {
-      this.refreshUsersList();
-    });
+  deleteUser(item: number) {
+    if (confirm('Are you sure you want to delete that user?')) {
+      this.http.deleteUser(item).subscribe(() => {
+        this.refreshUsersList();
+      });
+    }
   }
 }

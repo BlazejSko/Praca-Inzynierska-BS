@@ -1,7 +1,7 @@
 <table mat-table [dataSource]="classesList" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>No.</th>
-    <td mat-cell *matCellDef="let element" (click)="show(element)">
+    <td mat-cell *matCellDef="let element">
       {{ element.id }}
     </td>
   </ng-container>
@@ -38,13 +38,7 @@
   <ng-container matColumnDef="options">
     <th mat-header-cell *matHeaderCellDef>Options</th>
     <td mat-cell *matCellDef="let element">
-      <button
-        *ngIf="loggedUser.is_staff || loggedUser.is_superuser"
-        mat-fab
-        color="primary"
-      >
-        <mat-icon>edit</mat-icon>
-      </button>
+
       <button
         *ngIf="loggedUser.is_staff || loggedUser.is_superuser"
         mat-fab
@@ -54,10 +48,7 @@
         <mat-icon>delete</mat-icon>
       </button>
       <button
-        *ngIf="
-          !element.participants.length <= element.max_capacity &&
-          (!loggedUser.is_staff || !loggedUser.is_superuser)
-        "
+        *ngIf="showRegisterButton(element.id, element.participants.length, element.max_capacity)"
         mat-raised-button
         color="primary"
         (click)="register(element.id)"

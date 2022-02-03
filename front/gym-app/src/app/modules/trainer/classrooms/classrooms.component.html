@@ -1,32 +1,54 @@
-<p>classrooms works!</p>
-
-<p *ngFor="let classroom of ClassroomList" (click)="classroomClicked(classroom)">{{ classroom.name }}
-    <button (click)="deleteClassroom(classroom.id)"> Delete </button>
-</p>
-
-Name <input type="text" [(ngModel)]="selectedClassroom.name"> <br>
-<button *ngIf="selectedClassroom.id !== -1" (click)="editClassroom()">Edit</button>
-<button *ngIf="selectedClassroom.name !== ''" (click)="addClassroom()">Post</button>
-<hr>
-
-
-  
 <table mat-table [dataSource]="ClassroomList" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
 
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
 
+  <ng-container matColumnDef="options">
+    <th mat-header-cell *matHeaderCellDef>options</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-fab color="primary" (click)="classroomClicked(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
 
-    
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  
+      <button mat-fab color="primary" (click)="deleteClassroom(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<hr />
+
+<div class="edit">
+  <mat-card>
+    <h3>Add new classroom</h3>
+    <mat-form-field>
+      <input matInput placeholder="name" [(ngModel)]="selectedClassroom.name" />
+    </mat-form-field>
+    <div class="edit">
+      <button
+        mat-raised-button
+        *ngIf="selectedClassroom.id !== -1"
+        (click)="editClassroom()"
+      >
+        Edit
+      </button>
+      <button
+        mat-raised-button
+        *ngIf="selectedClassroom.name !== ''"
+        (click)="addClassroom()"
+      >
+        Add
+      </button>
+    </div>
+  </mat-card>
+</div>

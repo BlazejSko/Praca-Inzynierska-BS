@@ -25,8 +25,11 @@
     *ngIf="authenticated && loggedUser.is_staff"
     >Classes Category</a
   >
-  <a mat-button routerLink="classrooms" *ngIf="!loggedUser.is_staff"
-    >About Us</a
+  <a
+    mat-button
+    routerLink="classrooms"
+    *ngIf="authenticated && loggedUser.is_staff"
+    >Classrooms</a
   >
   <a mat-raised-button color="primary" routerLink="login" *ngIf="!authenticated"
     >Log In</a

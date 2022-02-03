@@ -30,7 +30,6 @@ export class AddEdidClassesComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form.getRawValue());
     this.http.addClass(this.form.getRawValue()).subscribe(() => {
       alert('Added succesfull');
     });
@@ -51,7 +50,6 @@ export class AddEdidClassesComponent implements OnInit {
 
     this.http.getClassroomsList().subscribe((data) => {
       this.classrooms = data;
-      console.log(this.classrooms);
     });
   }
 }
